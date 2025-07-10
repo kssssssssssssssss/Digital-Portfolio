@@ -101,6 +101,16 @@
   color: #666;
 }
 
+.footer-section a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+.footer-section a:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
 /* Hamburger styles */
 .hamburger {
   display: none;
