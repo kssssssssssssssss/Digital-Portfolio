@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-bg-video" autoplay loop muted playsinline>
+            <source src="images/9150545-hd_1920_1080_24fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <nav class="navbar">
+            <div class="logo">StudioKS</div>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="project1.html">Projects</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="hero-content-wrapper">
+            <div class="hero-left">
+                <h1 class="hero-title">Kai Syuen</h1>
+                <div class="hero-image-bg">
+                    <img src="images/Podiums.jpg" alt="Hero Graphic" class="hero-image">
+                </div>
+                <div class="hero-subtitle">
+                    <span>IT</span>
+                    <span>|</span>
+                    <span>Designer</span>
+                    <span>|</span>
+                    <span>Coding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <p class="slide-in-up">I'm a recent Diploma graduate from Nanyang Polytechnic (NYP) with a strong passion for web and app design. I enjoy bringing creative ideas to life through clean, functional code and user-focused interfaces.</p>
+        <button class="slide-in-up">Contact Me</button>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="slide-in-up">My Work</h2>
+        <div class="project slide-in-left">
+            <h3>UI/UX Design</h3>
+            <p>This project demonstrates my design, creativity, and prototyping skills using Figma. It presents a fully interactive website layout, complete with clickable buttons and intuitive navigation to simulate a real user experience.</p>
+            <img src="images/Screenshot 2025-07-08 131301.png" alt="Project 1">
+        </div>
+        <div class="project slide-in-right">
+            <h3>Web Development</h3>
+            <p>This project highlights a web development piece I created using HTML, CSS, and JavaScript. It features a simple yet functional car dealership website, complete with a search function to enhance user accessibility and improve overall browsing experience.</p>
+            <img src="images/Screenshot 2025-07-08 132548.png" alt="Project 2">
+        </div>
+        <div class="project slide-in-left">
+            <h3>Proposal Presentation App Design</h3>
+            <p>This project highlights the mobile app interface features I contributed, focusing on allowing users to track project progress and organize their files more efficiently.</p>
+            <img src="images/Screenshot 2025-07-08 134936.png" alt="Project 3">
+        </div>
+        <div class="project slide-in-right">
+            <h3>Full Stack Development</h3>
+            <p>This was a collaborative team project where I was responsible for developing the user account management features. My contributions included enabling users to update their passwords, email addresses, and home addresses. The page was designed using Figma, while the front-end and back-end were built with React and Node.js.</p>
+            <img src="images/home2.png" alt="Project 4">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>StudioKS</h4>
+                <p>Creating innovative digital experiences</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: chenkaisyuen@gmail.com</p>
+                <p>Phone: +65 8854 0119</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow</h4>
+                <p>LinkedIn | Tiktok | Instagram</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 StudioKS. All rights reserved.</p>
+        </div>
+    </section>
+
+
+
+    <script>
+      // Sticky navbar background only
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scroll with offset for fixed navbar (for in-page anchors)
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const yOffset = -120; // Adjust this value to match your navbar height
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }
+          }
+        });
+      });
+
+      // Smooth scroll to anchor on page load (with offset for navbar)
+      window.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            setTimeout(() => {
+              const yOffset = -120; // Adjust to match your navbar height
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }, 100); // Delay to ensure layout is ready
+          }
+        }
+      });
+
+      // Scroll-triggered animations
+      function checkScroll() {
+        const elements = document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-up, .slide-in-down');
+        
+        elements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150; // Trigger when element is 150px from viewport bottom
+          
+          if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('animate');
+          }
+        });
+      }
+
+      // Check for animations on scroll
+      window.addEventListener('scroll', checkScroll);
+      
+      // Check for animations on page load
+      window.addEventListener('load', checkScroll);
+
+      // Make project divs clickable
+      document.addEventListener('DOMContentLoaded', function() {
+        const projects = document.querySelectorAll('.project');
+        
+        // Define project page mappings
+        const projectPages = [
+          'project1.html', // UI/UX Design
+          'project3.html', // Web Development  
+          'project4.html', // Proposal Presentation App Design
+          'project2.html'  // Full Stack Development
+        ];
+        
+        projects.forEach((project, index) => {
+          project.style.cursor = 'pointer';
+          project.addEventListener('click', function() {
+            window.location.href = projectPages[index];
+          });
+        });
+      });
+    </script>
+
+    <!-- SVG mask for wavy water effect -->
+    <svg width="0" height="0" style="position:absolute;">
+      <mask id="wave-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <rect x="0" y="0" width="1" height="1" fill="black"/>
+        <path id="wave-path" d="" fill="white"/>
+      </mask>
+    </svg>
+
+    <script>
+    // Animate the wavy water mask (reveal effect)
+    function getWavePath(progress) {
+      // progress: 0 (bottom) to 1 (top)
+      const height = 1 - progress;
+      const amplitude = 0.04; // wave height
+      const frequency = 3; // number of waves
+      let path = `M0,1 L0,${height}`;
+      for (let i = 0; i <= 100; i++) {
+        const x = i / 100;
+        const y = height - Math.sin(x * Math.PI * frequency + progress * 2 * Math.PI) * amplitude * (1 - progress);
+        path += ` L${x},${y}`;
+      }
+      path += ` L1,1 Z`;
+      return path;
+    }
+
+    let start;
+    function animateWave(ts) {
+      if (!start) start = ts;
+      const duration = 2500; // ms (a little slower)
+      let linear = Math.min((ts - start) / duration, 1);
+      let progress = linear * linear; // quadratic ease-in
+      const path = getWavePath(progress);
+      // White below the wave (revealed), black above (hidden)
+      const wavePath = document.getElementById('wave-path');
+      wavePath.setAttribute('d', path);
+      wavePath.setAttribute('fill', 'white');
+      if (progress < 1) {
+        requestAnimationFrame(animateWave);
+      }
+    }
+    requestAnimationFrame(animateWave);
+    </script>
+</body>
+</html>
