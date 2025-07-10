@@ -1,0 +1,351 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Caudex', serif;
+  background: #fff;
+  color: #000;
+  scroll-behavior: smooth;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-bottom: 100px;
+}
+
+.hero-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 200px; /* adjust based on your navbar height */
+}
+
+.hero-subtitle {
+  flex: 1 1 400px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.hero-title {
+  font-size: 8rem;
+  line-height: 1.1;
+}
+
+.hero-left {
+    flex: 0.3;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 40px;
+    margin-top: -200px;
+    margin-left: 120px;
+}
+
+.hero-image-bg {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 300px;
+}
+
+.hero-subtitle p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.hero-subtitle span {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Social Media Section */
+.socials {
+  padding: 60px 20px 40px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.socials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-family: 'Caudex', serif;
+  font-weight: 700;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border-color: #007bff;
+  background: #fff;
+}
+
+.social-icon {
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon svg {
+  width: 32px;
+  height: 32px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.social-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  font-family: 'Caudex', serif;
+  font-weight: 600;
+  color: #333;
+}
+
+.social-info p {
+  font-size: 0.95rem;
+  color: #666;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Platform-specific hover effects */
+.social-link.linkedin:hover {
+  border-color: #0077b5;
+  background: #f0f8ff;
+}
+
+.social-link.linkedin:hover .social-icon svg {
+  color: #0077b5;
+}
+
+.social-link.github:hover {
+  border-color: #333;
+  background: #f8f9fa;
+}
+
+.social-link.github:hover .social-icon svg {
+  color: #333;
+}
+
+.social-link.instagram:hover {
+  border-color: #e4405f;
+  background: #fff5f5;
+}
+
+.social-link.instagram:hover .social-icon svg {
+  color: #e4405f;
+}
+
+.social-link.tiktok:hover {
+  border-color: #000;
+  background: #f8f8f8;
+}
+
+.social-link.tiktok:hover .social-icon svg {
+  color: #000;
+}
+
+@media (max-width: 700px) {
+  .social-links {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .social-link {
+    padding: 20px;
+  }
+  
+  .social-icon {
+    font-size: 1.5rem;
+    margin-right: 16px;
+    width: 40px;
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 80px 20px;
+  background: #fafafa;
+}
+
+.contact-form {
+  padding: 40px 0;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.contact-form label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 6px; /* creates small spacing above textbox */
+  margin-top: 0;
+  text-align: left;
+  display: block;
+  font-family: 'Caudex', serif;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid #000;
+  background: transparent;
+  transition: border 0.2s;
+  resize: vertical;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  color: #111;
+  margin-bottom: 18px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border: 1px solid #000;
+  outline: none;
+}
+
+.contact-form .button-row {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.contact-form button {
+  width: 160px;
+  background: transparent;
+  color: #111;
+  border: 1px solid #000;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: 'Caudex', serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  padding: 7px 0;
+}
+
+.contact-form button:hover {
+  background: #000;
+  color: #fff;
+}
+
+.form-row {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.form-group {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#subject, #message {
+  width: 700px;
+}
+
+
+@media (max-width: 900px) {
+    .hero-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+        column-gap: 0;
+    }
+    .hero-left {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .hero-image-bg {
+        justify-content: center;
+        margin-bottom: 0;
+    }
+    .hero-image {
+        width: 200px;
+    }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-content-wrapper .hero-title {
+  opacity: 0;
+  animation: slideInLeft 0.7s cubic-bezier(0.4,0,0.2,1) 0.2s forwards;
+}
+
+.hero-content-wrapper span {
+  opacity: 0;
+  animation: slideInLeft  0.7s cubic-bezier(0.4,0,0.2,1) 0.6s forwards;
+  transform: translateX(-120px);
+}
+
+.hero-content-wrapper p {
+  opacity: 0;
+  animation: slideInLeft 0.7s cubic-bezier(0.4,0,0.2,1) 1s forwards;
+}

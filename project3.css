@@ -1,0 +1,299 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: 'Caudex', serif;
+    background: #fff;
+    color: #000;
+    scroll-behavior: smooth;
+  }
+
+  /* CSS Custom Properties for smooth transitions */
+  :root {
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --zoom-scale: 1.03;
+    --shadow-depth: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.18);
+  }
+  
+  /* Fade-in animation for page load */
+  .hero-content-wrapper {
+    opacity: 0;
+    animation: fadeIn 1.2s ease-in-out forwards;
+  }
+  
+  .project-header {
+    animation-delay: 0.2s;
+  }
+  
+  .project-img {
+    animation-delay: 0.4s;
+  }
+  
+  .project-nav {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* overflow: hidden; */
+    padding-top: 100px; /* adjust to match or slightly exceed navbar height */
+  }
+  
+  .hero-content-wrapper {
+    width: 100%;
+    padding: 100px 80px 0 80px;
+    box-sizing: border-box;
+  }
+  
+  .project-row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .project-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    margin-bottom: 40px;
+    gap: 40px;
+  }
+  
+  .project-title {
+    font-family: 'Caudex', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .project-desc {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: left;
+    margin: 0;
+    line-height: 1.7;
+  }
+  
+  .project-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Image Slider Styles */
+  .image-slider {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.4s var(--transition-smooth);
+    transform-origin: center center;
+  }
+  
+  .slider-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 20px 15px 0;
+    border-color: transparent rgba(255, 255, 255, 0.9) transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s var(--transition-smooth);
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .slider-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 20px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s var(--transition-smooth);
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .slider-container:hover::before,
+  .slider-container:hover::after {
+    opacity: 1;
+  }
+  
+  .slider-container:hover {
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.005);
+    transition: box-shadow 0.4s var(--transition-smooth), transform 0.4s var(--transition-elastic);
+  }
+  
+  .slider-container .project-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s var(--transition-smooth), transform 0.4s var(--transition-elastic);
+    cursor: pointer;
+    visibility: hidden;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+  
+  .slider-container .project-img.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transform: scale(1);
+    transition: opacity 0.5s var(--transition-smooth), transform 0.4s var(--transition-elastic);
+  }
+  
+  .slider-container:hover .project-img.active {
+    transform: scale(var(--zoom-scale));
+    transition: transform 0.4s var(--transition-elastic);
+  }
+  
+  .slider-container .hint-text {
+    content: 'Click to navigate';
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-family: 'Caudex', serif;
+    opacity: 0;
+    transition: opacity 0.3s var(--transition-smooth), transform 0.3s var(--transition-smooth);
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  .slider-container:hover .hint-text {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  
+  .slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-smooth);
+    padding: 0;
+    transform-origin: center center;
+  }
+  
+  .slider-dot.active {
+    background: #000;
+    transform: scale(1.2);
+  }
+  
+  .slider-dot:hover {
+    background: #333;
+    border-color: #333;
+    transform: scale(1.1);
+  }
+  
+  .project-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 0;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  
+  .project-btn {
+    background-color: transparent;
+    color: #000;
+    text-decoration: none;
+    padding: 14px 24px;
+    font-size: 1rem;
+    border-radius: 6px;
+    font-family: 'Caudex', serif;
+    transition: all 0.3s var(--transition-smooth);
+    transform-origin: center center;
+  }
+  
+  .project-btn:hover {
+    background-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  body > section.hero {
+    flex: 1;
+  }
+  
+  .footer {
+    margin-top: 300px;
+  }
+  
+  
+  
+  @media (max-width: 900px) {
+    .project-header {
+      flex-direction: column;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .project-title, .project-desc {
+      margin: 0 0 16px 0;
+      text-align: center;
+    }
+  } 

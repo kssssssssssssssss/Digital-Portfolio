@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - StudioKS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap" rel="stylesheet">
+    <!-- <link href="home.css" rel="stylesheet"> -->
+    <link href="project2.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <nav class="navbar">
+            <div class="logo">StudioKS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="project1.html" class="active">Projects</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content-wrapper">
+            <div class="project-row">
+              <div class="project-header">
+                <h3 class="project-title">Full Stack Development</h3>
+                <p class="project-desc">
+                    This was a collaborative team project where I was responsible for developing the user account management features. My contributions included enabling users to update their passwords, email addresses, and home addresses. The page was designed using Figma, while the front-end and back-end were built with React and Node.js.
+                </p>
+              </div>
+              <div class="image-slider">
+                <div class="slider-container">
+                  <img src="images/home2.png" alt="Luxurious hotel design" class="project-img active" data-slide="1">
+                  <img src="images//Signup1.png" alt="Luxurious hotel design" class="project-img" data-slide="2">
+                  <img src="images/login1.png" alt="Luxurious hotel design" class="project-img" data-slide="3">
+                  <img src="images/account.png" alt="Luxurious hotel design" class="project-img" data-slide="4">
+                  <img src="images/password.png" alt="Luxurious hotel design" class="project-img" data-slide="5">
+                  <div class="hint-text">Click to navigate</div>
+                </div>
+              </div>
+              <div class="project-nav">
+                <a href="project1.html" class="project-btn next-btn">← Previous Project</a>
+                <a href="project3.html" class="project-btn next-btn">Next Project →</a>
+              </div>
+            </div>
+        </div>
+    </section>
+        
+    <!-- Footer -->
+    <section class="footer">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h4>StudioKS</h4>
+              <p>Creating innovative digital experiences</p>
+          </div>
+          <div class="footer-section">
+              <h4>Contact</h4>
+              <p>Email: chenkaisyuen@gmail.com</p>
+              <p>Phone: +65 8854 0119</p>
+          </div>
+          <div class="footer-section">
+              <h4>Follow</h4>
+              <p>LinkedIn | Tiktok | Instagram</p>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 StudioKS. All rights reserved.</p>
+      </div>
+  </section>
+    
+    <script>
+      // Sticky navbar background only
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scroll with offset for fixed navbar (for in-page anchors)
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const yOffset = -120; // Adjust this value to match your navbar height
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }
+          }
+        });
+      });
+
+      // Smooth scroll to anchor on page load (with offset for navbar)
+      window.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            setTimeout(() => {
+              const yOffset = -120; // Adjust to match your navbar height
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }, 100); // Delay to ensure layout is ready
+          }
+        }
+      });
+
+      // Image Slider Functionality
+      function initSlider() {
+        const sliderImages = document.querySelectorAll('.slider-container .project-img');
+        let currentSlide = 1;
+        const totalSlides = sliderImages.length;
+        
+        // Click on image to navigate
+        const sliderContainer = document.querySelector('.slider-container');
+        sliderContainer.addEventListener('click', function(e) {
+          const rect = this.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          const containerWidth = rect.width;
+          const clickPosition = clickX / containerWidth;
+          
+          let nextSlide;
+          
+          if (clickPosition < 0.5) {
+            // Clicked on left side - go to previous
+            nextSlide = currentSlide === 1 ? totalSlides : currentSlide - 1;
+          } else {
+            // Clicked on right side - go to next
+            nextSlide = currentSlide === totalSlides ? 1 : currentSlide + 1;
+          }
+          
+          // Update current slide
+          currentSlide = nextSlide;
+          
+          // Remove active class from all images
+          sliderImages.forEach(img => img.classList.remove('active'));
+          
+          // Add active class to current image
+          document.querySelector(`.project-img[data-slide="${currentSlide}"]`).classList.add('active');
+        });
+      }
+
+      // Initialize slider when page loads
+      window.addEventListener('DOMContentLoaded', initSlider);
+    </script>
+</body>
+</html> 

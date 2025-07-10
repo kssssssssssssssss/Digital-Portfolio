@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - StudioKS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,100&display=swap" rel="stylesheet">
+    <!-- <link href="home.css" rel="stylesheet"> -->
+    <link href="project4.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <nav class="navbar">
+            <div class="logo">StudioKS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="project1.html" class="active">Projects</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content-wrapper">
+            <div class="project-row">
+              <div class="project-header">
+                <h3 class="project-title">Proposal Presentation App Design</h3>
+                <p class="project-desc">
+                  This project showcases a mobile app interface I helped design for a proposal presentation. My contributions is focused on helping students efficiently manage their projects, track progress, and organize files in one place. Inspired by our own struggles with juggling assignments, tests, and deadlines, my team and I developed this idea to create a practical solution that resonates with the everyday challenges students face.
+                </p>
+              </div>
+              <img src="images/Screenshot 2025-07-08 134936.png" alt="Luxurious hotel design" class="project-img">
+              <div class="project-nav">
+                <a href="project3.html" class="project-btn prev-btn">← Previous Project</a>
+              </div>
+            </div>
+        </div>
+    </section>
+        
+    <!-- Footer -->
+    <section class="footer">
+      <div class="footer-content">
+          <div class="footer-section">
+              <h4>StudioKS</h4>
+              <p>Creating innovative digital experiences</p>
+          </div>
+          <div class="footer-section">
+              <h4>Contact</h4>
+              <p>Email: chenkaisyuen@gmail.com</p>
+              <p>Phone: +65 8854 0119</p>
+          </div>
+          <div class="footer-section">
+              <h4>Follow</h4>
+              <p>LinkedIn | Tiktok | Instagram</p>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; 2024 StudioKS. All rights reserved.</p>
+      </div>
+  </section>
+    
+    <script>
+      // Sticky navbar background only
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scroll with offset for fixed navbar (for in-page anchors)
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const yOffset = -120; // Adjust this value to match your navbar height
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }
+          }
+        });
+      });
+
+      // Smooth scroll to anchor on page load (with offset for navbar)
+      window.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            setTimeout(() => {
+              const yOffset = -120; // Adjust to match your navbar height
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }, 100); // Delay to ensure layout is ready
+          }
+        }
+      });
+    </script>
+</body>
+</html> 
