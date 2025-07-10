@@ -441,8 +441,8 @@ body, html {
 }
 
 .interests-list {
-  padding-bottom: 20px;
-  margin-bottom: 30px;
+  padding-bottom: 40px;
+  margin-bottom: 140px;
 }
 
 @keyframes float {
@@ -477,38 +477,38 @@ body, html {
 }
 
 .interests-list li:nth-child(1) {
-  top: 20px;
+  top: 10px;
   left: 120px;
   animation-delay: 0s;
 }
 
 .interests-list li:nth-child(2) {
-  top: 40px;
-  right: 80px;
+  top: 30px;
+  right: 120px;
   animation-delay: 0.5s;
 }
 
 .interests-list li:nth-child(3) {
-  top: 80px;
-  left: 80px;
+  top: 10 0px;
+  left: 50px;
   animation-delay: 1s;
 }
 
 .interests-list li:nth-child(4) {
-  top: 60px;
+  top: 100px;
   left: 280px;
   animation-delay: 1.5s;
 }
 
 .interests-list li:nth-child(5) {
-  top: 100px;
-  right: 40px;
+  top: 140px;
+  right: 60px;
   animation-delay: 2s;
 }
 
 .interests-list li:nth-child(6) {
-  top: 120px;
-  right: 180px;
+  top: 190px;
+  right: 230px;
   animation-delay: 2.5s;
 }
 

@@ -100,3 +100,124 @@
   font-weight: 700;
   color: #666;
 }
+
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  z-index: 20;
+}
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  margin: 5px 0;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 24px 20px;
+  }
+  .nav-links {
+    gap: 16px;
+  }
+  .footer {
+    padding: 24px 20px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .footer-section {
+    min-width: unset;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    width: 180px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 12px 0;
+    display: none;
+    z-index: 10;
+  }
+  .nav-links li {
+    width: 100%;
+    text-align: right;
+    margin: 0;
+    padding: 0 18px;
+  }
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #eee;
+  }
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+  .navbar.open .nav-links {
+    display: flex;
+  }
+  /* Hamburger animation when open */
+  .navbar.open .hamburger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar.open .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar.open .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 8px;
+  }
+  .logo {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .footer {
+    padding: 16px 8px;
+    font-size: 0.85rem;
+  }
+  .footer-content {
+    gap: 10px;
+  }
+  .footer-section h4 {
+    font-size: 1rem;
+  }
+}
