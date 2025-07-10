@@ -175,22 +175,112 @@ body, html {
   color: #333;
 }
 
+.social-link.instagram {
+  position: relative;
+  z-index: 1;
+}
+.social-link.instagram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+.social-link.instagram:hover::before {
+  opacity: 1;
+}
 .social-link.instagram:hover {
-  border-color: #e4405f;
-  background: #fff5f5;
+  border-color: transparent;
 }
 
-.social-link.instagram:hover .social-icon svg {
-  color: #e4405f;
+.social-link.tiktok {
+  position: relative;
+  z-index: 1;
 }
-
+.social-link.tiktok::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, #25F4EE 0%, #FE2C55 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+.social-link.tiktok:hover::before {
+  opacity: 1;
+}
 .social-link.tiktok:hover {
-  border-color: #000;
-  background: #f8f8f8;
+  border-color: transparent;
 }
 
-.social-link.tiktok:hover .social-icon svg {
-  color: #000;
+.social-link.email:hover {
+  border-color: #007bff;
+  background: #f0f8ff;
+}
+.social-link.email:hover .social-icon svg {
+  color: #007bff;
+}
+
+.social-link.resume:hover {
+  border-color: #007bff;
+  background: #f0f8ff;
+}
+.social-link.resume:hover .social-icon svg {
+  color: #007bff;
+}
+.social-link.xiaohongshu:hover {
+  border-color: #F43F2C;
+  background: #fff0f0;
+}
+.social-link.xiaohongshu:hover .social-icon svg {
+  color: #F43F2C;
+}
+
+.social-link.xiaohongshu .xiaohongshu-rect {
+  fill: #666;
+  transition: fill 0.3s;
+}
+.social-link.xiaohongshu:hover .xiaohongshu-rect {
+  fill: #FF2442;
+}
+
+.social-link.instagram:hover .instagram-icon .icon-path {
+  fill: url(#instagram-gradient);
+}
+.social-link.tiktok:hover .tiktok-icon .icon-path {
+  fill: url(#tiktok-gradient);
+}
+
+.tiktok-glitch {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tiktok-blue {
+  fill: #25F4EE;
+}
+.tiktok-red {
+  fill: #FE2C55;
+}
+.tiktok-icon .icon-path {
+  opacity: 1;
+  transition: none;
+}
+.social-link.tiktok:hover .tiktok-glitch {
+  opacity: 1;
 }
 
 @media (max-width: 700px) {
